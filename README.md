@@ -1,6 +1,6 @@
 # sse.js
 
-__This is slightly modified version of original [SSE](https://github.com/mpetazzoni/sse.js)__
+__This is slightly modified version of original [SSE](https://github.com/mpetazzoni/sse.js).__
 
 `sse.js` is a flexible `EventSource` replacement for JavaScript designed
 to consume Server-Sent Events (SSE) streams with more control and
