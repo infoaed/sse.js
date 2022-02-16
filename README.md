@@ -137,4 +137,4 @@ for modifying reconnection parameters `setReconnectParams` can be used.
 ## TODOs and caveats
 
 - Automatically reconnect with `Last-Event-ID`
-- Use HTTP/1.1 '[201 Created](https://httpwg.org/specs/rfc7231.html#status.201)' to change reconnect address
+- Use HTTP/1.1 [201 Created](https://httpwg.org/specs/rfc7231.html#status.201) to change reconnect address
