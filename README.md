@@ -8,8 +8,8 @@ does not support specifying additional custom headers to the HTTP
 request.
 
 This package is designed to provide a usable replacement to
-`EventSource` that makes all of this possible: `SSE`. It is a fully
-compatible `EventSource` polyfill so you should be able to do this if
+`EventSource` that makes all of this possible: `SSE`. It is a mostly
+`EventSource` compatible so you should be able to do this if
 you want/need to:
 
 ```js
@@ -47,8 +47,8 @@ Additionally, the events will have the following fields:
 
 - `open`, when the first block of data is received from the event
   stream;
-- `error`, if an error occurs while making the request;
-- `readystatechange`, to notify of a change in the ready state of the
+- `message` on received data/content;
+- `error`, to notify of a change in the ready state of the
   event source.
 
 Note that all events dispatched by `SSE` will have the event target
@@ -108,10 +108,16 @@ var source = new SSE(url, {headers: {'Content-Type': 'text/plain'},
 
 ## `withCredentials` support
 
-This `EventSource` polyfill supports the `withCredentials` option to
-request that the outgoing HTTP request be made with a CORS credentials
-mode of `include`, as per the [HTML Living
+SSE supports the `withCredentials` option to request that the outgoing HTTP
+request be made with a CORS credentials mode of `include`, as per the [HTML Living
 Standard](https://fetch.spec.whatwg.org/#concept-request-credentials-mode).
+
+## Reconnection mechanism
+
+This SSE version will reconnect on lost connection after `RECONN_DELAY`
+milliseconds, retrying `RECONN_COUNT` times with `RECONN_INVERVAL` milliseconds
+and optionally multiplying `RECONN_INVERVAL` with number of attempted
+reconnects.
 
 ## Options reference
 
@@ -124,8 +130,4 @@ Standard](https://fetch.spec.whatwg.org/#concept-request-credentials-mode).
 
 ## TODOs and caveats
 
-- Internet Explorer 11 does not support arbitrary values in
-  `CustomEvent`s.  A dependency on `custom-event-polyfill` is necessary
-  for IE11 compatibility.
-- Improve `XmlHttpRequest` error handling and connection states
 - Automatically reconnect with `Last-Event-ID`
