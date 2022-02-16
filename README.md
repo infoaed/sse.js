@@ -119,6 +119,10 @@ milliseconds, retrying `RECONN_COUNT` times with `RECONN_INVERVAL` milliseconds
 and optionally multiplying `RECONN_INVERVAL` with number of attempted
 reconnects.
 
+If providing payload, reconnect URL probably differs from orinigal, so for updating
+URL (probably after initial successful connect) there is `updateURL` method,
+for modifying reconnection parameters `setReconnectParams` can be used.
+
 ## Options reference
 
 | Name              | Description |
